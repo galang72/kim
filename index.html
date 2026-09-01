@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIM Desa Tanjungwangi — Kelompok Informasi Masyarakat</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
+
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-50 top-0 border-b border-slate-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="#beranda" onclick="showSection('landing-view')" class="flex items-center space-x-3 group flex-shrink-0">
+                    <div class="w-11 h-11 rounded-2xl flex items-center justify-center p-1.5 shadow-md shadow-indigo-600/20 bg-indigo-50 border border-indigo-200 group-hover:scale-105 transition">
+                        <img src="img/logo-kim.jpg" alt="Logo KIM" class="w-full h-full object-cover rounded-xl">
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-sm lg:text-base text-slate-900 block leading-tight">KIM TANJUNGWANGI</span>
+                        <span class="text-[10px] lg:text-[11px] font-bold text-indigo-600 tracking-wider uppercase block">Kelompok Informasi Masyarakat</span>
+                    </div>
+                </a>
+
+                <div class="hidden xl:flex items-center space-x-5 font-medium text-xs lg:text-sm text-slate-600">
+                    <a href="#beranda" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Beranda</a>
+                    <a href="#profil" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Profil Desa</a>
+                    <a href="#tentang" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Tentang KIM</a>
+                    <a href="#berita" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Berita Desa</a>
+                    <a href="#lembaga" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Lembaga Desa</a>
+                    <a href="#video" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Video</a>
+                    <a href="#galeri" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Galeri</a>
+                    <a href="#kontak" onclick="showSection('landing-view')" class="hover:text-indigo-600 transition">Kontak</a>
+                </div>
+
+                <div class="hidden xl:flex items-center flex-shrink-0">
+                    <a href="#kontak" onclick="showSection('landing-view')" class="bg-indigo-600 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-indigo-700 transition shadow-lg shadow-indigo-600/20 text-xs lg:text-sm flex items-center gap-2">
+                        <span>Layanan Aspirasi</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="xl:hidden flex items-center">
+                    <button id="menu-btn" aria-label="Menu Utama" class="text-slate-700 focus:outline-none text-2xl p-2 rounded-xl hover:bg-slate-100 transition">
+                        <i class="fa-solid fa-bars" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-slate-100 px-6 py-6 space-y-3 shadow-2xl max-h-[80vh] overflow-y-auto">
+            <a href="#beranda" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold border-b border-slate-50">Beranda</a>
+            <a href="#profil" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold border-b border-slate-50">Profil Desa</a>
+            <a href="#tentang" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold border-b border-slate-50">Tentang KIM</a>
+            <a href="#berita" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold border-b border-slate-50">Berita Desa</a>
+            <a href="#lembaga" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold border-b border-slate-50">Lembaga & Perangkat Desa</a>
+            <a href="#video" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold border-b border-slate-50">Video Kegiatan</a>
+            <a href="#galeri" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold border-b border-slate-50">Dokumentasi Foto</a>
+            <a href="#kontak" onclick="showSection('landing-view')" class="mobile-link block py-2 text-slate-700 hover:text-indigo-600 font-semibold">Kontak & Aspirasi</a>
+        </div>
+    </nav>
+
+    <div id="landing-view">
+        <header id="beranda" class="relative pt-36 pb-24 md:pt-48 md:pb-36 text-white overflow-hidden bg-slate-900">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop" alt="Pusat Informasi Masyarakat" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 bg-indigo-500/30 border border-indigo-400/40 text-indigo-100 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6 backdrop-blur-md shadow-inner">
+                    <i class="fa-solid fa-bullhorn text-indigo-400"></i> Kelompok Informasi Masyarakat (KIM) Desa Tanjungwangi
+                </div>
+                
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-[1.2] max-w-4xl mx-auto tracking-tight drop-shadow-lg">
+                    Jembatan Informasi & <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-200 to-white">Aspirasi Warga Desa</span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 text-slate-200 font-light leading-relaxed drop-shadow">
+                    Mewujudkan masyarakat yang cerdas informasi, aktif berpartisipasi, dan terhubung langsung dengan kemajuan pembangunan Desa Tanjungwangi.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#profil" class="bg-indigo-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/30 hover:bg-indigo-500 transition transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                        <span>Lihat Profil Desa</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                    <a href="#berita" class="bg-slate-900/80 border border-slate-700 backdrop-blur-md text-slate-200 font-bold px-8 py-4 rounded-xl hover:bg-slate-800 transition text-center shadow-lg">
+                        Baca Berita Terbaru
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section id="profil" class="py-20 md:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest block mb-2">Demografi & Wilayah</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Profil Desa Tanjungwangi</h2>
+                    <p class="text-slate-600 text-base max-w-xl mx-auto">Gambaran umum mengenai statistik penduduk, luas wilayah, serta batas-batas administratif desa.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <span class="text-slate-500 text-xs font-bold uppercase tracking-wider block mb-1">Jumlah Penduduk</span>
+                        <h3 class="text-2xl font-extrabold text-slate-900">± 4.550 Jiwa</h3>
+                        <p class="text-slate-400 text-xs mt-1">Laki-laki & Perempuan</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-map"></i>
+                        </div>
+                        <span class="text-slate-500 text-xs font-bold uppercase tracking-wider block mb-1">Luas Wilayah</span>
+                        <h3 class="text-2xl font-extrabold text-slate-900">325 Hektar</h3>
+                        <p class="text-slate-400 text-xs mt-1">Permukiman, Pertanian, & Fasum</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <span class="text-slate-500 text-xs font-bold uppercase tracking-wider block mb-1">Jumlah KK</span>
+                        <h3 class="text-2xl font-extrabold text-slate-900">1.280 KK</h3>
+                        <p class="text-slate-400 text-xs mt-1">Terbagi dalam beberapa dusun</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200/80 p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <span class="text-slate-500 text-xs font-bold uppercase tracking-wider block mb-1">Pembagian Wilayah</span>
+                        <h3 class="text-2xl font-extrabold text-slate-900">4 Dusun</h3>
+                        <p class="text-slate-400 text-xs mt-1">RW / RT Terintegrasi</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-indigo-600/30 text-indigo-400 rounded-xl flex items-center justify-center mb-4 border border-indigo-500/30">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-4">Batas-Batas Wilayah Desa</h3>
+                            <ul class="space-y-3 text-slate-300 text-sm">
+                                <li class="flex justify-between border-b border-slate-800 pb-2">
+                                    <span class="font-medium text-slate-400">Sebelah Utara</span>
+                                    <span class="font-semibold text-white">Desa [Nama Desa Sebelah Utara]</span>
+                                </li>
+                                <li class="flex justify-between border-b border-slate-800 pb-2">
+                                    <span class="font-medium text-slate-400">Sebelah Selatan</span>
+                                    <span class="font-semibold text-white">Desa [Nama Desa Sebelah Selatan]</span>
+                                </li>
+                                <li class="flex justify-between border-b border-slate-800 pb-2">
+                                    <span class="font-medium text-slate-400">Sebelah Barat</span>
+                                    <span class="font-semibold text-white">Desa [Nama Desa Sebelah Barat]</span>
+                                </li>
+                                <li class="flex justify-between pb-2">
+                                    <span class="font-medium text-slate-400">Sebelah Timur</span>
+                                    <span class="font-semibold text-white">Desa [Nama Desa Sebelah Timur]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-50/50 border border-indigo-100 p-8 rounded-3xl shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-4 shadow-md">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Potensi & Karakteristik Utama</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Desa Tanjungwangi dikenal sebagai wilayah agraris dengan hasil bumi yang melimpah serta sektor UMKM mandiri yang terus berkembang. Keaktifan warga dalam bergotong royong dan menjaga keterbukaan informasi publik menjadi fondasi utama kemajuan desa ini.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full">Pertanian & Holtikultura</span>
+                                <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full">UMKM Lokal</span>
+                                <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full">Desa Sadar Informasi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tentang" class="py-20 md:py-28 bg-slate-100/60 border-y border-slate-200/60 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div>
+                        <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest block mb-2">Tentang Lembaga</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">Apa itu KIM Desa Tanjungwangi?</h2>
+                        <p class="text-slate-600 text-base leading-relaxed mb-4">
+                            <strong>Kelompok Informasi Masyarakat (KIM)</strong> Desa Tanjungwangi adalah lembaga layanan publik mandiri yang dibentuk oleh dan untuk masyarakat. Kami fokus pada penyebaran informasi positif, literasi digital, pemberdayaan ekonomi warga, serta penyaluran aspirasi masyarakat kepada pemerintah desa.
+                        </p>
+                        <p class="text-slate-600 text-base leading-relaxed mb-8">
+                            Dengan semangat keterbukaan informasi publik, KIM hadir untuk memfilter hoaks, mengedukasi warga tentang program pemerintah, serta mengangkat potensi lokal desa ke kancah yang lebih luas.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center flex flex-col items-center justify-center">
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-indigo-600 mb-1">Aktif</h3>
+                                <p class="text-[11px] sm:text-xs text-slate-600 font-semibold uppercase tracking-wider">Literasi & Edukasi Warga</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm text-center flex flex-col items-center justify-center">
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-indigo-600 mb-1">Transparan</h3>
+                                <p class="text-[11px] sm:text-xs text-slate-600 font-semibold uppercase tracking-wider">Penyebar Info Desa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -inset-2 bg-gradient-to-tr from-indigo-600 to-sky-400 rounded-3xl blur-lg opacity-20"></div>
+                        <div class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 h-80 sm:h-96 rounded-3xl flex flex-col items-center justify-center text-slate-300 shadow-2xl p-8 text-center border border-slate-700">
+                            <div class="w-20 h-20 bg-indigo-600/20 text-indigo-400 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-indigo-500/30 shadow-inner">
+                                <i class="fa-solid fa-satellite-dish"></i>
+                            </div>
+                            <span class="font-bold text-lg text-white mb-2">KIM Desa Tanjungwangi</span>
+                            <p class="text-xs text-slate-400 max-w-xs">Mitra strategis Pemerintahan Desa dalam diseminasi informasi dan komunikasi publik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="berita" class="py-20 md:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                    <div>
+                        <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest block mb-2">Warta Desa & Informasi Publik</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Berita & Kegiatan Terbaru</h2>
+                        <p class="text-slate-600 text-base mt-2">Update seputar pengumuman desa, kegiatan warga, dan program pembangunan.</p>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <button onclick="showSection('archive-view')" class="inline-flex items-center gap-2 text-indigo-600 font-bold text-sm hover:text-indigo-700 transition cursor-pointer">
+                            <span>Arsip Berita Lainnya</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <article class="bg-slate-50 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col group">
+                        <div class="h-56 overflow-hidden bg-slate-200 relative">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="Penyuluhan Kesehatan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-indigo-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Kesehatan</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center gap-2 text-slate-400 text-xs mb-3 font-medium">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span>28 Agustus 2026</span>
+                                <span>•</span>
+                                <i class="fa-regular fa-user"></i>
+                                <span>Redaksi KIM</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-3 leading-snug group-hover:text-indigo-600 transition">
+                                Pemerintah Desa Bersama Puskesmas Gelar Sosialisasi Pola Hidup Sehat
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Kegiatan rutin posyandu terpadu dan penyuluhan kesehatan balita serta lansia diselenggarakan di balai desa...
+                            </p>
+                            <button onclick="openArticle('artikel-1')" class="mt-auto inline-flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider hover:text-indigo-700 transition cursor-pointer text-left">
+                                <span>Baca Selengkapnya</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="bg-slate-50 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col group">
+                        <div class="h-56 overflow-hidden bg-slate-200 relative">
+                            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop" alt="Pembangunan Infrastruktur" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Pembangunan</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center gap-2 text-slate-400 text-xs mb-3 font-medium">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span>24 Agustus 2026</span>
+                                <span>•</span>
+                                <i class="fa-regular fa-user"></i>
+                                <span>Tim Infrastruktur</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-3 leading-snug group-hover:text-indigo-600 transition">
+                                Rehabilitasi Jalan Usaha Tani Dusun Sukamaju Resmi Dimulai
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Untuk memperlancar distribusi hasil panen warga, pembangunan pengerasan jalan tani mulai dikerjakan secara gotong royong...
+                            </p>
+                            <button onclick="openArticle('artikel-2')" class="mt-auto inline-flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider hover:text-indigo-700 transition cursor-pointer text-left">
+                                <span>Baca Selengkapnya</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="bg-slate-50 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col group">
+                        <div class="h-56 overflow-hidden bg-slate-200 relative">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" alt="Pelatihan UMKM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 left-4 bg-sky-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Ekonomi</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex items-center gap-2 text-slate-400 text-xs mb-3 font-medium">
+                                <i class="fa-regular fa-calendar"></i>
+                                <span>19 Agustus 2026</span>
+                                <span>•</span>
+                                <i class="fa-regular fa-user"></i>
+                                <span>KIM Digital</span>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-3 leading-snug group-hover:text-indigo-600 transition">
+                                Pelatihan Digital Marketing UMKM Desa Guna Perluas Pangsa Pasar
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Pelaku usaha lokal dilatih cara memasarkan produk kerajinan dan kuliner melalui platform digital dan media sosial...
+                            </p>
+                            <button onclick="openArticle('artikel-3')" class="mt-auto inline-flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider hover:text-indigo-700 transition cursor-pointer text-left">
+                                <span>Baca Selengkapnya</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="lembaga" class="py-20 md:py-28 bg-slate-100/60 border-t border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider inline-block mb-3">Pemerintahan & Kelembagaan Desa</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Struktur Perangkat & Lembaga Desa</h2>
+                <p class="text-slate-600 text-base max-w-xl mx-auto mb-16">Sinergi antara Pemerintahan Desa dan seluruh lembaga kemasyarakatan dalam membangun Desa Tanjungwangi.</p>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm hover:shadow-md transition flex flex-col justify-between items-center">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl mb-4 shadow-md">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-1">Kepala Desa & Perangkat</h3>
+                            <p class="text-indigo-600 font-semibold text-xs uppercase tracking-wider mb-3">Eksekutif Pemerintahan Desa</p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Memimpin penyelenggaraan pemerintahan, pembangunan, pembinaan kemasyarakatan, dan pemberdayaan.</p>
+                        </div>
+                        <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 w-full mt-2 text-center">
+                            <span class="font-semibold text-slate-700">Pimpinan:</span> [Nama Kepala Desa]
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm hover:shadow-md transition flex flex-col justify-between items-center">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl mb-4 shadow-md">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-1">BPD (Badan Permusyawaratan Desa)</h3>
+                            <p class="text-indigo-600 font-semibold text-xs uppercase tracking-wider mb-3">Legislatif Desa</p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Menampung aspirasi warga, membahas dan menyepakati Peraturan Desa bersama Kepala Desa.</p>
+                        </div>
+                        <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 w-full mt-2 text-center">
+                            <span class="font-semibold text-slate-700">Ketua BPD:</span> [Nama Ketua BPD]
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm hover:shadow-md transition flex flex-col justify-between items-center">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl mb-4 shadow-md">
+                                <i class="fa-solid fa-handshake-angle"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-1">LPM (Lembaga Pemberdayaan Masyarakat)</h3>
+                            <p class="text-indigo-600 font-semibold text-xs uppercase tracking-wider mb-3">Mitra Pembangunan</p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Menggerakkan swadaya gotong royong partisipasi masyarakat dalam perencanaan dan pelaksanaan pembangunan.</p>
+                        </div>
+                        <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 w-full mt-2 text-center">
+                            <span class="font-semibold text-slate-700">Ketua LPM:</span> [Nama Ketua LPM]
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm hover:shadow-md transition flex flex-col justify-between items-center">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl mb-4 shadow-md">
+                                <i class="fa-solid fa-people-group"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-1">PKK (Pemberdayaan Kesejahteraan Keluarga)</h3>
+                            <p class="text-indigo-600 font-semibold text-xs uppercase tracking-wider mb-3">Pemberdayaan Keluarga</p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Menggerakkan peran serta perempuan dan keluarga dalam meningkatkan kesejahteraan mental maupun fisik.</p>
+                        </div>
+                        <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 w-full mt-2 text-center">
+                            <span class="font-semibold text-slate-700">Ketua PKK:</span> [Nama Ketua TP PKK]
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm hover:shadow-md transition flex flex-col justify-between items-center">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl mb-4 shadow-md">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-1">Karang Taruna Desa</h3>
+                            <p class="text-indigo-600 font-semibold text-xs uppercase tracking-wider mb-3">Organisasi Kepemudaan</p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Wadah pengembangan generasi muda yang aktif di bidang sosial, olahraga, seni, dan kewirausahaan.</p>
+                        </div>
+                        <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 w-full mt-2 text-center">
+                            <span class="font-semibold text-slate-700">Ketua Karang Taruna:</span> [Nama Ketua]
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm hover:shadow-md transition flex flex-col justify-between items-center">
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl mb-4 shadow-md">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-1">Satgas Linmas Desa</h3>
+                            <p class="text-indigo-600 font-semibold text-xs uppercase tracking-wider mb-3">Keamanan & Ketertiban</p>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">Membantu keamanan, ketenteraman, ketertiban umum, serta penanggulangan bencana di wilayah desa.</p>
+                        </div>
+                        <div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 w-full mt-2 text-center">
+                            <span class="font-semibold text-slate-700">Komandan Linmas:</span> [Nama Komandan]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="video" class="py-20 md:py-28 bg-slate-900 text-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-indigo-400 font-bold text-xs uppercase tracking-widest block mb-2">Dokumentasi Audio Visual</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Video Liputan & Kegiatan Desa</h2>
+                        <p class="text-slate-400 text-base mt-2">Saksikan rangkuman video profil, liputan khusus kegiatan warga, dan acara resmi di Desa Tanjungwangi.</p>
+                    </div>
+                    <div class="flex items-center space-x-3 mt-6 md:mt-0">
+                        <button onclick="scrollSlider('slider-video', 'left')" aria-label="Geser Kiri" class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-indigo-600 text-white flex items-center justify-center transition border border-slate-700 shadow-sm cursor-pointer">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <button onclick="scrollSlider('slider-video', 'right')" aria-label="Geser Kanan" class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-indigo-600 text-white flex items-center justify-center transition border border-slate-700 shadow-sm cursor-pointer">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="slider-video" class="flex gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth">
+                    <div class="min-w-[300px] sm:min-w-[400px] md:min-w-[450px] snap-start bg-slate-800 border border-slate-700 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full bg-slate-950">
+                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Profil Desa Tanjungwangi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider block mb-1">Profil & Potensi Desa</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Profil Resmi Desa Tanjungwangi Tahun 2026</h3>
+                            <p class="text-slate-400 text-sm">Menampilkan keindahan alam, kegiatan ekonomi warga, serta sarana prasarana yang ada di desa.</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[300px] sm:min-w-[400px] md:min-w-[450px] snap-start bg-slate-800 border border-slate-700 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full bg-slate-950">
+                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Liputan Kegiatan Warga" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider block mb-1">Liputan Khusus</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Gotong Royong Pembangunan Saluran Irigasi Desa</h3>
+                            <p class="text-slate-400 text-sm">Dokumentasi semangat kebersamaan warga dusun dalam kerja bakti bulanan.</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[300px] sm:min-w-[400px] md:min-w-[450px] snap-start bg-slate-800 border border-slate-700 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+                        <div class="relative aspect-video w-full bg-slate-950">
+                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Musyawarah Desa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider block mb-1">Musyawarah Warga</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Musyawarah Perencanaan Pembangunan Desa (Musrenbangdes)</h3>
+                            <p class="text-slate-400 text-sm">Rapat bersama warga dan perangkat desa untuk menetapkan prioritas program tahun depan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeri" class="py-20 md:py-28 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest block mb-2">Galeri Foto</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Dokumentasi Foto Kegiatan</h2>
+                        <p class="text-slate-600 text-base mt-2">Momen liputan kegiatan desa, pelatihan literasi digital, dan penyuluhan warga.</p>
+                    </div>
+                    <div class="flex items-center space-x-3 mt-6 md:mt-0">
+                        <button onclick="scrollSlider('slider-galeri', 'left')" aria-label="Geser Kiri" class="w-12 h-12 rounded-2xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 flex items-center justify-center transition border border-slate-200 shadow-sm cursor-pointer">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <button onclick="scrollSlider('slider-galeri', 'right')" aria-label="Geser Kanan" class="w-12 h-12 rounded-2xl bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 flex items-center justify-center transition border border-slate-200 shadow-sm cursor-pointer">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="slider-galeri" class="flex gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[350px] snap-start bg-slate-50 border border-slate-200/80 rounded-3xl p-4 shadow-sm hover:shadow-lg transition group">
+                        <div class="h-56 sm:h-64 rounded-2xl overflow-hidden bg-slate-200 mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop" alt="Peliputan Berita Desa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-1">Peliputan & Rapat Desa</h3>
+                        <p class="text-slate-500 text-xs">Tim KIM meliput musyawarah dan kegiatan pembangunan desa</p>
+                    </div>
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[350px] snap-start bg-slate-50 border border-slate-200/80 rounded-3xl p-4 shadow-sm hover:shadow-lg transition group">
+                        <div class="h-56 sm:h-64 rounded-2xl overflow-hidden bg-slate-200 mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" alt="Literasi Digital" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-1">Pelatihan Literasi Digital Warga</h3>
+                        <p class="text-slate-500 text-xs">Edukasi penggunaan internet sehat dan pencegahan hoaks</p>
+                    </div>
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[350px] snap-start bg-slate-50 border border-slate-200/80 rounded-3xl p-4 shadow-sm hover:shadow-lg transition group">
+                        <div class="h-56 sm:h-64 rounded-2xl overflow-hidden bg-slate-200 mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" alt="Diskusi Warga" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-1">Forum Diskusi Kelompok</h3>
+                        <p class="text-slate-500 text-xs">Menampung dan menyaring aspirasi kreatif dari pemuda desa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="py-20 md:py-28 bg-slate-100/60 border-t border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+                    <div>
+                        <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest block mb-2">Sekretariat KIM</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Hubungi Tim KIM Tanjungwangi</h2>
+                        <p class="text-slate-600 text-base mb-8">Punya informasi penting, berita seputar dusun, atau ingin menyampaikan aduan dan aspirasi? Silakan hubungi pusat informasi kami atau kunjungi media sosial resmi kami.</p>
+                        
+                        <div class="space-y-4 text-slate-600 text-base mb-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <span class="leading-relaxed">Kantor Sekretariat KIM, Komplek Kantor Desa Tanjungwangi, Kecamatan [...], Kabupaten [...]</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <span>+62 8xx-xxxx-xxxx (Hotline Redaksi KIM)</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <span class="break-all">kim.tanjungwangi@email.com</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-3">Tautan Resmi Sosial Media & Chat</span>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://wa.me/6281234567890?text=Halo%20Redaksi%20KIM%20Tanjungwangi,%20saya%20ingin%20mengirimkan%20informasi/aspirasi" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 shadow-md transition transform hover:-translate-y-0.5">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    <span>WhatsApp</span>
+                                </a>
+                                <a href="https://instagram.com/kim.tanjungwangi" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-90 text-white px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 shadow-md transition transform hover:-translate-y-0.5">
+                                    <i class="fa-brands fa-instagram text-lg"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="https://facebook.com/kim.tanjungwangi" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 shadow-md transition transform hover:-translate-y-0.5">
+                                    <i class="fa-brands fa-facebook text-lg"></i>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="https://tiktok.com/@kim.tanjungwangi" target="_blank" rel="noopener noreferrer" class="bg-slate-900 hover:bg-black text-white px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2 shadow-md transition transform hover:-translate-y-0.5">
+                                    <i class="fa-brands fa-tiktok text-lg"></i>
+                                    <span>TikTok</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-lg">
+                        <h3 class="text-xl font-bold text-slate-900 mb-6">Kirim Informasi / Aspirasi Warga</h3>
+                        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Informasi/Aspirasi berhasil dikirim ke Redaksi KIM Tanjungwangi!');">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Nama Lengkap / Pelapor</label>
+                                <input type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Masukkan nama Anda">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Nomor WhatsApp</label>
+                                <input type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Contoh: 08123456789">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Isi Berita / Info / Aspirasi</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Tuliskan informasi kegiatan atau pengaduan warga..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-600/20 text-base cursor-pointer">Kirim Informasi Sekarang</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="archive-view" class="hidden pt-32 pb-24 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="showSection('landing-view')" class="inline-flex items-center gap-2 text-indigo-600 font-bold text-sm mb-8 hover:text-indigo-800 transition cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Kembali ke Beranda</span>
+            </button>
+
+            <div class="mb-12 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-8">
+                <div>
+                    <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest block mb-2">Pusat Informasi Publik</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Arsip Berita & Kegiatan Desa</h1>
+                    <p class="text-slate-600 text-base mt-2">Daftar lengkap seluruh publikasi, pengumuman, dan laporan kegiatan di Desa Tanjungwangi.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 justify-center md:justify-end">
+                    <button onclick="filterArchive('all')" id="btn-filter-all" class="bg-indigo-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer shadow-sm">Semua</button>
+                    <button onclick="filterArchive('Kesehatan')" id="btn-filter-kesehatan" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer">Kesehatan</button>
+                    <button onclick="filterArchive('Pembangunan')" id="btn-filter-pembangunan" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer">Pembangunan</button>
+                    <button onclick="filterArchive('Ekonomi')" id="btn-filter-ekonomi" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer">Ekonomi</button>
+                </div>
+            </div>
+
+            <div id="archive-grid" class="grid md:grid-cols-3 gap-8">
+                </div>
+        </div>
+    </div>
+
+    <div id="article-view" class="hidden pt-32 pb-24 bg-white min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="goBackFromArticle()" class="inline-flex items-center gap-2 text-indigo-600 font-bold text-sm mb-8 hover:text-indigo-800 transition cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Kembali</span>
+            </button>
+
+            <div id="article-category-badge" class="inline-block bg-indigo-600 text-white text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 shadow-sm">Kesehatan</div>
+            <h1 id="article-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                Judul Artikel Lengkap Akan Muncul Di Sini
+            </h1>
+
+            <div class="flex flex-wrap items-center gap-4 text-slate-500 text-sm pb-6 mb-8 border-b border-slate-200">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-xs">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span id="article-author" class="font-semibold text-slate-700">Redaksi KIM</span>
+                </div>
+                <span>•</span>
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="article-date">28 Agustus 2026</span>
+                </div>
+                <span>•</span>
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>4 Menit Baca</span>
+                </div>
+            </div>
+
+            <div class="rounded-3xl overflow-hidden shadow-xl mb-10 h-80 sm:h-[450px] bg-slate-200">
+                <img id="article-image" src="" alt="Ilustrasi Berita" class="w-full h-full object-cover">
+            </div>
+
+            <div id="article-content" class="prose prose-slate lg:prose-lg max-w-none text-slate-700 leading-relaxed space-y-6 text-base sm:text-lg">
+                </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span class="font-bold text-slate-900 text-sm">Bagikan Berita Ini:</span>
+                <div class="flex items-center gap-3">
+                    <a href="#" onclick="alert('Tautan berita berhasil disalin!'); return false;" class="bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-link"></i> Salin Tautan
+                    </a>
+                    <a href="https://wa.me/?text=Baca%20berita%20menarik%20dari%20KIM%20Desa%20Tanjungwangi" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200/80">
+                <h3 class="text-xl font-bold text-slate-900 mb-6">Tanggapan & Komentar Warga</h3>
+                <form class="space-y-4 mb-8" onsubmit="event.preventDefault(); alert('Komentar berhasil dikirim dan akan ditampilkan setelah dimoderasi.');">
+                    <div>
+                        <input type="text" required placeholder="Nama Anda / Warga Dusun" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    </div>
+                    <div>
+                        <textarea rows="3" required placeholder="Tulis tanggapan atau pertanyaan Anda mengenai berita ini..." class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
+                    </div>
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl text-sm transition shadow-md shadow-indigo-600/20 cursor-pointer">Kirim Komentar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 border border-slate-700 flex items-center justify-center p-1">
+                    <img src="img/logo-kim.jpg" alt="Logo KIM" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <div class="text-left">
+                    <span class="font-bold text-slate-200 block">KIM Desa Tanjungwangi</span>
+                    <p class="text-slate-400 text-xs">&copy; 2026 All Rights Reserved.</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white flex items-center justify-center transition border border-slate-700">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/kim.tanjungwangi" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white flex items-center justify-center transition border border-slate-700">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/kim.tanjungwangi" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition border border-slate-700">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://tiktok.com/@kim.tanjungwangi" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-black text-slate-300 hover:text-white flex items-center justify-center transition border border-slate-700">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const scrollAmount = sliderId === 'slider-video' ? 420 : 350;
+            if (direction === 'left') {
+                slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        const articlesData = {
+            'artikel-1': {
+                category: 'Kesehatan',
+                categoryBg: 'bg-indigo-600',
+                title: 'Pemerintah Desa Bersama Puskesmas Gelar Sosialisasi Pola Hidup Sehat',
+                author: 'Redaksi KIM',
+                date: '28 Agustus 2026',
+                image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop',
+                summary: 'Kegiatan rutin posyandu terpadu dan penyuluhan kesehatan balita serta lansia diselenggarakan di balai desa...',
+                content: `
+                    <p><strong>TANJUNGWANGI</strong> — Sebagai bagian dari komitmen untuk meningkatkan derajat kesehatan masyarakat, Pemerintah Desa Tanjungwangi bekerja sama dengan Puskesmas setempat menggelar kegiatan penyuluhan terpadu bertema "Pola Hidup Bersih dan Sehat (PHBS) Menuju Keluarga Mandiri".</p>
+                    <p>Acara yang diselenggarakan di Balai Desa Tanjungwangi ini dihadiri oleh puluhan warga yang terdiri dari kader posyandu, ibu-ibu PKK, serta perwakilan tokoh masyarakat dari setiap dusun. Dalam pemaparannya, narasumber utama menekankan pentingnya menjaga kebersihan sumber air minum, pengelolaan limbah rumah tangga yang benar, serta pencegahan angka stunting sejak dini.</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-6 mb-3">Pentingnya Peran Aktif Kader Posyandu</h3>
+                    <p>Kepala Desa Tanjungwangi dalam sambutannya menyampaikan apresiasi yang tinggi kepada seluruh kader posyandu yang selama ini menjadi garda terdepan dalam memantau tumbuh kembang anak-anak di desa. Beliau juga mengajak seluruh warga agar tidak ragu memanfaatkan fasilitas kesehatan gratis yang disediakan oleh pemerintah.</p>
+                    <p>Kegiatan ditutup dengan sesi tanya jawab interaktif dan pembagian paket gizi seimbang bagi balita yang hadir. Diharapkan melalui kegiatan ini kesadaran warga terhadap pentingnya kesehatan lingkungan semakin meningkat secara signifikan.</p>
+                `
+            },
+            'artikel-2': {
+                category: 'Pembangunan',
+                categoryBg: 'bg-emerald-600',
+                title: 'Rehabilitasi Jalan Usaha Tani Dusun Sukamaju Resmi Dimulai',
+                author: 'Tim Infrastruktur',
+                date: '24 Agustus 2026',
+                image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1200&auto=format&fit=crop',
+                summary: 'Untuk memperlancar distribusi hasil panen warga, pembangunan pengerasan jalan tani mulai dikerjakan secara gotong royong...',
+                content: `
+                    <p><strong>SUKAMAJU</strong> — Kabar gembira bagi para petani di Dusun Sukamaju, Desa Tanjungwangi. Proyek rehabilitasi dan pengerasan Jalan Usaha Tani (JUT) sepanjang 1,2 kilometer resmi dimulai pada minggu ini melalui Dana Desa tahap kedua.</p>
+                    <p>Selama musim hujan sebelumnya, akses jalan menuju lahan pertanian warga kerap mengalami kendala akibat licin dan rusaknya struktur tanah. Hal ini sempat memperlambat proses distribusi hasil panen padi dan sayuran ke pasar utama kecamatan.</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-6 mb-3">Gotong Royong Warga Sekitar</h3>
+                    <p>Pelaksanaan proyek ini dikerjakan secara swakelola dengan melibatkan tenaga kerja lokal dari warga dusun setempat. Sistem gotong royong ini tidak hanya mempercepat proses pengerjaan, tetapi juga menumbuhkan rasa memiliki (sense of belonging) terhadap infrastruktur desa yang telah dibangun.</p>
+                    <p>Dengan selesainya pengerasan jalan ini nantinya, biaya transportasi hasil bumi diprediksi akan menjadi jauh lebih efisien, sehingga bermuara pada peningkatan kesejahteraan para petani lokal.</p>
+                `
+            },
+            'artikel-3': {
+                category: 'Ekonomi',
+                categoryBg: 'bg-sky-600',
+                title: 'Pelatihan Digital Marketing UMKM Desa Guna Perluas Pangsa Pasar',
+                author: 'KIM Digital',
+                date: '19 Agustus 2026',
+                image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop',
+                summary: 'Pelaku usaha lokal dilatih cara memasarkan produk kerajinan dan kuliner melalui platform digital dan media sosial...',
+                content: `
+                    <p><strong>TANJUNGWANGI</strong> — Era digital menuntut para pelaku usaha kecil dan menengah (UMKM) untuk beradaptasi. Menjawab tantangan tersebut, Kelompok Informasi Masyarakat (KIM) Desa Tanjungwangi menggelar pelatihan intensif bertajuk "Digital Marketing dan Branding Produk Lokal".</p>
+                    <p>Pelatihan ini menghadirkan praktisi pemasaran digital yang membimbing puluhan pelaku UMKM mulai dari cara membuat foto produk yang menarik menggunakan smartphone, teknik copywriting promosi di media sosial, hingga cara mendaftarkan produk ke marketplace nasional.</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mt-6 mb-3">Produk Lokal Siap Go Digital</h3>
+                    <p>Banyak produk unggulan desa seperti keripik khas, olahan hasil tani, dan kerajinan tangan yang selama ini hanya dipasarkan secara konvensional. Melalui pelatihan ini, para pelaku usaha diajarkan cara memperluas jangkauan pasar hingga ke luar kota.</p>
+                    <p>KIM Desa Tanjungwangi berkomitmen akan terus mendampingi para pelaku UMKM lokal hingga toko online mereka aktif dan mampu mendatangkan omset tambahan bagi keluarga.</p>
+                `
+            },
+            'artikel-4': {
+                category: 'Pembangunan',
+                categoryBg: 'bg-emerald-600',
+                title: 'Musyawarah Perencanaan Pembangunan Desa (Musrenbangdes) TA 2027',
+                author: 'Pemerintah Desa',
+                date: '12 Agustus 2026',
+                image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop',
+                summary: 'Menampung usulan prioritas dari perwakilan tiap RT/RW demi kemajuan infrastruktur dan pemberdayaan masyarakat...',
+                content: `
+                    <p><strong>TANJUNGWANGI</strong> — Pemerintah Desa Tanjungwangi bersama BPD menggelar Musyawarah Perencanaan Pembangunan Desa (Musrenbangdes) dalam rangka menyusun RKPDes Tahun Anggaran 2027.</p>
+                    <p>Acara ini dihadiri oleh tokoh masyarakat, ketua RT/RW, unsur perempuan, serta karang taruna. Setiap dusun menyampaikan usulan prioritas mulai dari pembangunan fisik lanjutan hingga program pelatihan keterampilan pemuda.</p>
+                `
+            },
+            'artikel-5': {
+                category: 'Kesehatan',
+                categoryBg: 'bg-indigo-600',
+                title: 'Program Vaksinasi & Pemeriksaan Lansia Keliling Dusun',
+                author: 'Kader Posyandu',
+                date: '05 Agustus 2026',
+                image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1200&auto=format&fit=crop',
+                summary: 'Layanan kesehatan jemput bola langsung mendatangi warga lanjut usia yang berhalangan hadir ke posyandu...',
+                content: `
+                    <p><strong>TANJUNGWANGI</strong> — Demi memastikan kesehatan para warga lanjut usia tetap terpantau dengan baik, tim medis desa bersama kader posyandu melaksanakan kunjungan jemput bola pemeriksaan kesehatan gratis keliling dusun.</p>
+                `
+            }
+        };
+
+        let lastActiveSection = 'landing-view';
+
+        function renderArchive(filterCategory = 'all') {
+            const grid = document.getElementById('archive-grid');
+            grid.innerHTML = '';
+
+            const keys = Object.keys(articlesData);
+            keys.forEach(key => {
+                const item = articlesData[key];
+                if(filterCategory !== 'all' && item.category !== filterCategory) return;
+
+                const card = document.createElement('article');
+                card.className = "bg-slate-50 border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col group";
+                card.innerHTML = `
+                    <div class="h-56 overflow-hidden bg-slate-200 relative">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 left-4 ${item.categoryBg} text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">${item.category}</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-2 text-slate-400 text-xs mb-3 font-medium">
+                            <i class="fa-regular fa-calendar"></i>
+                            <span>${item.date}</span>
+                            <span>•</span>
+                            <i class="fa-regular fa-user"></i>
+                            <span>${item.author}</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-3 leading-snug group-hover:text-indigo-600 transition">
+                            ${item.title}
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            ${item.summary}
+                        </p>
+                        <button onclick="openArticle('${key}')" class="mt-auto inline-flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider hover:text-indigo-700 transition cursor-pointer text-left">
+                            <span>Baca Selengkapnya</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterArchive(category) {
+            ['all', 'Kesehatan', 'Pembangunan', 'Ekonomi'].forEach(cat => {
+                const btn = document.getElementById(`btn-filter-${cat.toLowerCase()}`);
+                if(btn) {
+                    if(cat === category || (cat === 'all' && category === 'all')) {
+                        btn.className = "bg-indigo-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer shadow-sm";
+                    } else {
+                        btn.className = "bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer";
+                    }
+                }
+            });
+            renderArchive(category);
+        }
+
+        function openArticle(articleId) {
+            const data = articlesData[articleId];
+            if(!data) return;
+
+            // Simpan posisi aktif sebelum masuk detail
+            if(!document.getElementById('landing-view').classList.contains('hidden')) {
+                lastActiveSection = 'landing-view';
+            } else if(!document.getElementById('archive-view').classList.contains('hidden')) {
+                lastActiveSection = 'archive-view';
+            }
+
+            document.getElementById('article-category-badge').innerText = data.category;
+            document.getElementById('article-category-badge').className = `inline-block ${data.categoryBg} text-white text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 shadow-sm`;
+            document.getElementById('article-title').innerText = data.title;
+            document.getElementById('article-author').innerText = data.author;
+            document.getElementById('article-date').innerText = data.date;
+            document.getElementById('article-image').src = data.image;
+            document.getElementById('article-content').innerHTML = data.content;
+
+            document.getElementById('landing-view').classList.add('hidden');
+            document.getElementById('archive-view').classList.add('hidden');
+            document.getElementById('article-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBackFromArticle() {
+            document.getElementById('article-view').classList.add('hidden');
+            if(lastActiveSection === 'archive-view') {
+                document.getElementById('archive-view').classList.remove('hidden');
+            } else {
+                document.getElementById('landing-view').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showSection(viewId) {
+            document.getElementById('landing-view').classList.add('hidden');
+            document.getElementById('archive-view').classList.add('hidden');
+            document.getElementById('article-view').classList.add('hidden');
+
+            if(viewId === 'archive-view') {
+                document.getElementById('archive-view').classList.remove('hidden');
+                renderArchive('all');
+            } else {
+                document.getElementById('landing-view').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if(!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+    </script>
+</body>
+</html>
