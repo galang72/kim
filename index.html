@@ -531,7 +531,7 @@
                                 <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
-                                <span class="leading-relaxed">Kantor Sekretariat KIM, Komplek Kantor Desa Tanjungwangi, Kecamatan [...], Kabupaten [...]</span>
+                                <span class="leading-relaxed">Kantor Sekretariat KIM, Komplek Kantor Desa Tanjungwangi, Kecamatan [Kecamatan], Kabupaten [Kabupaten]</span>
                             </div>
                             <div class="flex items-center space-x-4">
                                 <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -572,21 +572,70 @@
 
                     <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-lg">
                         <h3 class="text-xl font-bold text-slate-900 mb-6">Kirim Informasi / Aspirasi Warga</h3>
-                        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Informasi/Aspirasi berhasil dikirim ke Redaksi KIM Tanjungwangi!');">
+                        <form id="form-aspirasi" class="space-y-4">
                             <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Nama Lengkap / Pelapor</label>
-                                <input type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Masukkan nama Anda">
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="aspirasi-nama">Nama Lengkap / Pelapor</label>
+                                <input id="aspirasi-nama" type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Masukkan nama Anda">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Nomor WhatsApp</label>
-                                <input type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Contoh: 08123456789">
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="aspirasi-wa">Nomor WhatsApp</label>
+                                <input id="aspirasi-wa" type="text" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Contoh: 08123456789">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Isi Berita / Info / Aspirasi</label>
-                                <textarea rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Tuliskan informasi kegiatan atau pengaduan warga..."></textarea>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="aspirasi-pesan">Isi Berita / Info / Aspirasi</label>
+                                <textarea id="aspirasi-pesan" rows="4" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 transition" placeholder="Tuliskan informasi kegiatan atau pengaduan warga..."></textarea>
                             </div>
                             <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-600/20 text-base cursor-pointer">Kirim Informasi Sekarang</button>
                         </form>
+    <script>
+  // Ganti dengan URL Web App Google Apps Script Anda
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVPg99UmvrcFiiNY83Iu_VstQXwI1fzlSe4trqiMNf8qsTWl12JD-HNZg0814YGK3IUg/exec";
+
+    const aspirasiForm = document.getElementById('form-aspirasi');
+    
+    if (aspirasiForm) {
+    aspirasiForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+      // Ambil tombol submit untuk memberikan efek loading
+    const submitBtn = aspirasiForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = "Mengirim...";
+    submitBtn.disabled = true;
+
+      // Menyiapkan data berdasarkan ID input di HTML Anda
+    const formData = {
+        jenis: "aspirasi",
+        nama: document.getElementById('aspirasi-nama').value,
+        whatsapp: document.getElementById('aspirasi-wa').value,
+        pesan: document.getElementById('aspirasi-pesan').value
+    };
+
+      // Mengirim data ke Google Sheets via Apps Script
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(() => {
+        alert('Terima kasih! Informasi atau aspirasi Anda berhasil dikirim.');
+        aspirasiForm.reset(); // Mengosongkan form kembali
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Maaf, terjadi kesalahan saat mengirim data. Silakan coba lagi.');
+    })
+    .finally(() => {
+        // Mengembalikan tombol seperti semula
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+    });
+}
+</script>                       
                     </div>
                 </div>
             </div>
@@ -660,10 +709,10 @@
             <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <span class="font-bold text-slate-900 text-sm">Bagikan Berita Ini:</span>
                 <div class="flex items-center gap-3">
-                    <a href="#" onclick="alert('Tautan berita berhasil disalin!'); return false;" class="bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
+                    <button id="btn-salin-tautan" type="button" class="bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer">
                         <i class="fa-solid fa-link"></i> Salin Tautan
-                    </a>
-                    <a href="https://wa.me/?text=Baca%20berita%20menarik%20dari%20KIM%20Desa%20Tanjungwangi" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
+                    </button>
+                    <a id="share-whatsapp" href="#" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
@@ -671,15 +720,19 @@
 
             <div class="mt-16 bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200/80">
                 <h3 class="text-xl font-bold text-slate-900 mb-6">Tanggapan & Komentar Warga</h3>
-                <form class="space-y-4 mb-8" onsubmit="event.preventDefault(); alert('Komentar berhasil dikirim dan akan ditampilkan setelah dimoderasi.');">
+                <form id="form-komentar" class="space-y-4 mb-8">
                     <div>
-                        <input type="text" required placeholder="Nama Anda / Warga Dusun" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        <input id="komentar-nama" type="text" required placeholder="Nama Anda / Warga Dusun" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600">
                     </div>
                     <div>
-                        <textarea rows="3" required placeholder="Tulis tanggapan atau pertanyaan Anda mengenai berita ini..." class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
+                        <textarea id="komentar-pesan" rows="3" required placeholder="Tulis tanggapan atau pertanyaan Anda mengenai berita ini..." class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
                     </div>
                     <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl text-sm transition shadow-md shadow-indigo-600/20 cursor-pointer">Kirim Komentar</button>
                 </form>
+                
+                <div id="list-komentar" class="space-y-4">
+                    <!-- Dynamic comments list -->
+                </div>
             </div>
         </div>
     </div>
@@ -815,7 +868,19 @@
             }
         };
 
+        // Menyimpan daftar komentar per artikel secara lokal di memori JavaScript
+        const commentsData = {
+            'artikel-1': [
+                { nama: 'Budi Santoso', tanggal: '28 Agustus 2026', pesan: 'Sangat informatif! Semoga kegiatan posyandu rutin ini terus berjalan lancar.' }
+            ],
+            'artikel-2': [],
+            'artikel-3': [],
+            'artikel-4': [],
+            'artikel-5': []
+        };
+
         let lastActiveSection = 'landing-view';
+        let currentActiveArticleId = null;
 
         function renderArchive(filterCategory = 'all') {
             const grid = document.getElementById('archive-grid');
@@ -871,9 +936,35 @@
             renderArchive(category);
         }
 
+        function renderComments(articleId) {
+            const container = document.getElementById('list-komentar');
+            container.innerHTML = '';
+            
+            const comments = commentsData[articleId] || [];
+            if (comments.length === 0) {
+                container.innerHTML = `<p class="text-sm text-slate-400 italic">Belum ada komentar. Jadilah yang pertama memberikan tanggapan!</p>`;
+                return;
+            }
+
+            comments.forEach(c => {
+                const div = document.createElement('div');
+                div.className = "bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm";
+                div.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-slate-900 text-sm">${c.nama}</span>
+                        <span class="text-xs text-slate-400">${c.tanggal}</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">${c.pesan}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
         function openArticle(articleId) {
             const data = articlesData[articleId];
             if(!data) return;
+
+            currentActiveArticleId = articleId;
 
             // Simpan posisi aktif sebelum masuk detail
             if(!document.getElementById('landing-view').classList.contains('hidden')) {
@@ -889,6 +980,14 @@
             document.getElementById('article-date').innerText = data.date;
             document.getElementById('article-image').src = data.image;
             document.getElementById('article-content').innerHTML = data.content;
+
+            // Update Share WhatsApp link dinamis berdasarkan halaman saat ini
+            const currentUrl = window.location.href.split('#')[0] + '#' + articleId;
+            const waShareUrl = `https://wa.me/?text=${encodeURIComponent('Baca berita menarik dari KIM Desa Tanjungwangi: ' + data.title + ' — ' + currentUrl)}`;
+            document.getElementById('share-whatsapp').href = waShareUrl;
+
+            // Render daftar komentar untuk artikel ini
+            renderComments(articleId);
 
             document.getElementById('landing-view').classList.add('hidden');
             document.getElementById('archive-view').classList.add('hidden');
@@ -925,6 +1024,51 @@
                 menuIcon.classList.add('fa-bars');
             }
         }
+
+        // Event listener untuk Salin Tautan
+        document.getElementById('btn-salin-tautan').addEventListener('click', () => {
+            const currentUrl = window.location.href;
+            navigator.clipboard.writeText(currentUrl).then(() => {
+                alert('Tautan berita berhasil disalin ke clipboard!');
+            }).catch(() => {
+                alert('Gagal menyalin tautan.');
+            });
+        });
+
+        // Event listener untuk Form Komentar Warga (Mencegah reload halaman & merefresh list komentar)
+        document.getElementById('form-komentar').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const namaInput = document.getElementById('komentar-nama');
+            const pesanInput = document.getElementById('komentar-pesan');
+
+            if (!currentActiveArticleId) return;
+
+            if (!commentsData[currentActiveArticleId]) {
+                commentsData[currentActiveArticleId] = [];
+            }
+
+            // Tambahkan komentar baru ke memori lokal
+            commentsData[currentActiveArticleId].unshift({
+                nama: namaInput.value,
+                tanggal: 'Baru saja',
+                pesan: pesanInput.value
+            });
+
+            // Reset form
+            namaInput.value = '';
+            pesanInput.value = '';
+
+            // Render ulang komentar agar langsung tampil
+            renderComments(currentActiveArticleId);
+            alert('Komentar berhasil dikirim dan ditampilkan.');
+        });
+
+        // Event listener untuk Form Aspirasi Warga
+        document.getElementById('form-aspirasi').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Informasi/Aspirasi berhasil dikirim ke Redaksi KIM Tanjungwangi!');
+            document.getElementById('form-aspirasi').reset();
+        });
     </script>
 </body>
 </html>
